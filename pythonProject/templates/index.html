@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="news-grid">
+
+{% for item in news_list %}
+<div class="news-block">
+
+    <img src="{{ url_for('static', filename='images/' + item.image) }}" class="news-image">
+
+    <div class="news-content">
+        <h2>{{ item.title }}</h2>
+
+        <div class="meta">
+            📍 {{ item.location }} |
+            📅 {{ item.date }}
+        </div>
+
+        <p>{{ item.short_description }}</p>
+
+        <a href="{{ url_for('news_detail', news_id=item.id) }}">
+            Читать далее →
+        </a>
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}
