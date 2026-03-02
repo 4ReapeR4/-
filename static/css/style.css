@@ -1,9 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0 20px;
-    background: #111; /* тёмный фон сайта */
-    color: #f4f4f4;
+  background-color: #111; /* тёмный фон */
+  color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -109,4 +109,118 @@ header {
     object-fit:cover;
     border-radius:10px;
     margin:20px 0;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Контейнер новостей */
+.news-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: flex-start;  /* слева выравниваем */
+  max-width: 65%;               /* оставляем больше места справа для питомца */
+  margin-left: 20px;            /* отступ от левого края */
+  margin-top: 20px;
+}
+
+/* Кубики новостей */
+.news-block {
+  background: #1c1c1c;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.news-block img.news-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Контейнер питомца */
+.pet-container {
+  position: fixed;
+  top: 30%;          /* отступ сверху: меняем место питомца по вертикали */
+  right: 20px;       /* отступ справа */
+  width: 120px;
+  height: 120px;
+  z-index: 1000;
+  background-color: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Фото питомца */
+.pet-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pet-container img.pet-hover { opacity: 0; }
+.pet-container:hover img.pet-normal { opacity: 0; }
+.pet-container:hover img.pet-hover { opacity: 1; }
+
+/* Глаза питомца — оставляем absolute */
+.pet-container .eye {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1010;
+  overflow: hidden;
+
+  /* добавляем relative внутри глаза */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Левый глаз */
+.pet-container .eye.left {
+  top: 45%;
+  left: 33%;
+}
+
+/* Правый глаз */
+.pet-container .eye.right {
+  top: 45%;
+  left: 52%;
+}
+
+/* Зрачки — теперь позиционируются относительно глаз */
+.pet-container .pupil {
+  width: 6px;
+  height: 6px;
+  background: #87ceeb;
+  border-radius: 50%;
+  position: absolute;
+  top: 30%;   /* чуть выше центра глаза */
+  left: 30%;  /* чуть левее центра глаза */
+  transform: translate(-50%, -50%);
+}
+
+/* Глаза исчезают при наведении */
+.pet-container:hover .eye,
+.pet-container:hover .pupil {
+  display: none;
 }

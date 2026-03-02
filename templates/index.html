@@ -1,31 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="news-grid">
-
-{% for item in news_list %}
-<div class="news-block">
-
-    <img src="{{ url_for('static', filename='images/' + item.image) }}" class="news-image">
-
-    <div class="news-content">
+<div class="main-container">
+  <div class="news-column">
+    {% for item in news_list %}
+      <div class="news-block">
+        {% if item.image %}
+        <img src="{{ url_for('static', filename=item.image) }}" class="news-img">
+        {% endif %}
         <h2>{{ item.title }}</h2>
-
-        <div class="meta">
-            📍 {{ item.location }} |
-            📅 {{ item.date }}
-        </div>
-
         <p>{{ item.short_description }}</p>
+        <a href="{{ url_for('news_detail', news_id=item.id) }}">Читать далее →</a>
+      </div>
+    {% endfor %}
+  </div>
 
-        <a href="{{ url_for('news_detail', news_id=item.id) }}">
-            Читать далее →
-        </a>
-    </div>
+  <div class="pet-container">
+    <img src="{{ url_for('static', filename='images/pet-normal.png') }}" class="pet pet-normal">
+    <img src="{{ url_for('static', filename='images/pet-hover.png') }}" class="pet pet-hover">
 
-</div>
-{% endfor %}
-
+    <div class="eye left"><div class="pupil"></div></div>
+    <div class="eye right"><div class="pupil"></div></div>
+  </div>
 </div>
 
 {% endblock %}

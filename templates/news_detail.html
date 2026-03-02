@@ -13,7 +13,7 @@
         ⚔ {{ item.casualties_estimate }}
     </div>
 
-    <img src="{{ url_for('static', filename='images/' + item.image) }}" class="news-img-detail">
+    <img src="{{ url_for('static', filename=item.image) }}" class="news-img">
 
     <div>
         {{ item.content | safe }}

@@ -77,7 +77,19 @@ body {
 </head>
 <body>
 
-{% block content %}{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>News Site</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  {% block content %}{% endblock %}
 
+  <script src="{{ url_for('static', filename='js/pet-eyes.js') }}"></script>
+
+</body>
+</html>
 </body>
 </html>
